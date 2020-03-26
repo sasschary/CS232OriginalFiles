@@ -47,19 +47,41 @@ class CalOS:
         '''Called when the timer expires. If there is no process in the
         ready queue, reset the timer and continue.  Else, context_switch.
         '''
-        pass
+        CalOS.current_proc.set_registers(self._cpu.get_registers())
+        if not self._ready_q:
+            if self._debug:
+                print("Ready queue empty, continuing with current process")
+            self.reset_timer()
+            self._cpu.set_registers(CalOS.current_proc.get_registers())
+            return
+        self.context_switch()
+        self.reset_timer()
 
     def context_switch(self):
         '''Do a context switch between the current_proc and the process
         on the front of the ready_q.
         '''
-        pass
+        if self._debug:
+            print("Performing context switch")
+        new_pcb = self._ready_q.pop(0)
+        CalOS.current_proc.set_registers(self._cpu.get_registers())
+        self._cpu.set_registers(new_pcb.get_registers())
+        self.add_to_ready_q(CalOS.current_proc)
+        new_pcb.set_state(PCB.RUNNING)
+        CalOS.current_proc = new_pcb
 
     def run(self):
         '''Startup the timer controller and execute processes in the ready
         queue on the given cpu -- i.e., run the operating system!
         '''
-        pass
+        if self._debug:
+            print("Starting to run a process...")
+        while self._ready_q:
+            CalOS.current_proc = self._ready_q.pop(0)
+            self.reset_timer()
+            self._cpu.set_registers(self.current_proc.get_registers())
+            self._cpu.run_process()
+            self.current_proc.set_state(PCB.DONE)
 
     def reset_timer(self):
         '''Reset the timer's countdown to the value in the current_proc's

@@ -1,0 +1,24 @@
+1. The PCB class is defined in calos.py.
+2. A PCB contains:
+    - A name
+    - A PID
+    - An entry point
+    - A high memory address
+    - A low memory address
+    - A running state
+    - The state of the process' registers
+3. A PCB is created when a program is loaded into memory from a tape. This is done in main.py on line 179: pcb = calos.PCB(procname)
+4. Valid process states are:
+    - NEW
+    - READY
+    - RUNNING
+    - WAITING
+    - DONE
+5. current_proc is defined on line 7 of calos.py. Its significance is that it is the PCB of the process which is currently running.
+6. The "code here...." section will only run when the mutex lock has been acquired, i.e., there won't be any race conditions on the countdown variable.
+7. When the countdown timer runs out, the ThreadController will:
+    - Acquire a lock on the interrupt
+    - Add the ThreadController's bus address to the list of devices which have raised an interrupt
+    - Raise the interrupt
+    - Release the interrupt lock
+    - Reset the countdown timer so that it is no longer running
