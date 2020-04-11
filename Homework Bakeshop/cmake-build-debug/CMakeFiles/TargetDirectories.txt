@@ -1,0 +1,3 @@
+/cygdrive/f/My Files/School/CS 232/Homework Bakeshop/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/cygdrive/f/My Files/School/CS 232/Homework Bakeshop/cmake-build-debug/CMakeFiles/Homework_Bakeshop.dir
+/cygdrive/f/My Files/School/CS 232/Homework Bakeshop/cmake-build-debug/CMakeFiles/edit_cache.dir

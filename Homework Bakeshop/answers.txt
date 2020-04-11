@@ -1,0 +1,14 @@
+1. My code runs generally the same way, but there could be slight variations. So, the general order is that the baker
+   will alternate between helping a customer and baking a loaf of bread, and he helps the customers in numerical
+   order. However, there is sometimes a he will get another loaf baked before the previous customer says goodbye,
+   and other times the customer will say goodbye before the loaf of bread is finished baking. This makes sense,
+   as the customers are always created in the same order, and will therefore all get put in a queue in the same order
+   and such. But after receiving the receipt, both the baker and the customer wait one second before either finishing
+   another loaf or leaving the store. This causes a race condition on writing to the console, and can change the
+   ordering of things just slightly.
+
+2. Giving the last customer priority generally moves him up in the line, but not necessarily all the way to the front.
+   Since he is created last, the others have a chance to wait first, and can get in line before the last customer
+   can even say, "Cogito, ergo sum!". So, in the case where the final customer's thread hasn't even been created by
+   the time the first few customers get in line, he can only be moved up in the queue so far. But he does generally
+   get server earlier than he might otherwise have been.

@@ -1,0 +1,1 @@
+/usr/bin/cc -g  -Wl,--enable-auto-import CMakeFiles/Homework_Bakeshop.dir/main.c.o  -o Homework_Bakeshop.exe -Wl,--out-implib,libHomework_Bakeshop.dll.a -Wl,--major-image-version,0,--minor-image-version,0 

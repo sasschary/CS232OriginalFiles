@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/cygdrive/f/My Files/School/CS 232/Homework Bakeshop/main.c
+stdio.h
+-
+semaphore.h
+-
+pthread.h
+-
+stdlib.h
+-
+stdbool.h
+-
+sys/unistd.h
+-
+sys/fcntl.h
+-
+sched.h
+-
+
